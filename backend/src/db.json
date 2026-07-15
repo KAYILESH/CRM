@@ -1,0 +1,147 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "Sarah",
+      "lastName": "Mitchell",
+      "email": "sarah.m@vertex.io",
+      "phone": "+1 (555) 234-5678",
+      "username": "sarah_m",
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+      "address": {
+        "city": "San Francisco",
+        "state": "CA",
+        "country": "USA"
+      },
+      "company": {
+        "name": "Vertex Solutions"
+      },
+      "status": "active",
+      "totalOrders": 3,
+      "totalSpent": 15600,
+      "joinDate": "2026-01-15T09:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "firstName": "Marcus",
+      "lastName": "Johnson",
+      "email": "marcus.j@technova.com",
+      "phone": "+1 (555) 345-6789",
+      "username": "marcus_j",
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus",
+      "address": {
+        "city": "New York",
+        "state": "NY",
+        "country": "USA"
+      },
+      "company": {
+        "name": "TechNova Inc."
+      },
+      "status": "active",
+      "totalOrders": 1,
+      "totalSpent": 12000,
+      "joinDate": "2026-02-20T14:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "firstName": "Elena",
+      "lastName": "Rostova",
+      "email": "elena.r@datastream.co",
+      "phone": "+44 20 7946 0192",
+      "username": "elena_r",
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Elena",
+      "address": {
+        "city": "London",
+        "state": "",
+        "country": "UK"
+      },
+      "company": {
+        "name": "DataStream Co."
+      },
+      "status": "pending",
+      "totalOrders": 2,
+      "totalSpent": 8400,
+      "joinDate": "2026-05-12T11:00:00.000Z"
+    },
+    {
+      "firstName": "TestFirstName",
+      "lastName": "TestLastName",
+      "email": "test@nexusflow.io",
+      "phone": "+1 (555) 999-9999",
+      "username": "test_user",
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=TestFirstName_4",
+      "address": {
+        "city": "Los Angeles",
+        "state": "CA",
+        "country": "USA"
+      },
+      "company": {
+        "name": "Test Company"
+      },
+      "status": "active",
+      "id": 4,
+      "totalOrders": 0,
+      "totalSpent": 0,
+      "joinDate": "2026-07-15T15:46:28.062Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "customerName": "Sarah Mitchell",
+      "customerAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+      "date": "2026-06-10T10:00:00.000Z",
+      "status": "delivered",
+      "items": [
+        {
+          "productId": 101,
+          "title": "Enterprise Plan License",
+          "price": 4800,
+          "quantity": 1,
+          "total": 4800
+        }
+      ],
+      "total": 4800,
+      "discountedTotal": 4800
+    },
+    {
+      "id": 2,
+      "customerId": 2,
+      "customerName": "Marcus Johnson",
+      "customerAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus",
+      "date": "2026-07-02T16:30:00.000Z",
+      "status": "processing",
+      "items": [
+        {
+          "productId": 102,
+          "title": "SaaS Platform Consultancy",
+          "price": 12000,
+          "quantity": 1,
+          "total": 12000
+        }
+      ],
+      "total": 12000,
+      "discountedTotal": 12000
+    },
+    {
+      "id": 3,
+      "customerId": 3,
+      "customerName": "Elena Rostova",
+      "customerAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Elena",
+      "date": "2026-07-14T09:00:00.000Z",
+      "status": "pending",
+      "items": [
+        {
+          "productId": 103,
+          "title": "Professional Plan License",
+          "price": 4200,
+          "quantity": 2,
+          "total": 8400
+        }
+      ],
+      "total": 8400,
+      "discountedTotal": 8400
+    }
+  ]
+}
