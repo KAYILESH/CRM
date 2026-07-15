@@ -1,0 +1,25 @@
+services:
+  # Backend API (Web Service)
+  - type: web
+    name: nexusflow-crm-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: FRONTEND_URL
+        value: https://nexusflow-crm-frontend.onrender.com # Update this to your frontend URL after deployment
+
+  # Frontend (Static Site)
+  - type: static
+    name: nexusflow-crm-frontend
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://nexusflow-crm-backend.onrender.com/api # Update this to your backend URL after deployment
