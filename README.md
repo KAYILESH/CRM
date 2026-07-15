@@ -1,72 +1,79 @@
 # NexusFlow CRM — Modern SaaS Dashboard
 
-A production-ready, responsive CRM dashboard built with React + Vite + TypeScript featuring a unique **Aurora Dark** design system.
+A production-ready, responsive CRM dashboard built with React + Vite + TypeScript featuring a unique **Aurora Dark** design system, connected to an Express API backend.
 
 ---
 
-## Quick Start
+## 🚀 Installation and Local Setup
 
+Follow these commands to run both the frontend and backend services locally.
+
+### Prerequisites
+* [Node.js](https://nodejs.org/) (v18 or higher recommended)
+* npm (v9 or higher)
+
+### 1. Clone & Setup Backend
+Open a terminal in the root folder and run:
 ```bash
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
 npm install
+
+# Build the TypeScript files
+npm run build
+
+# Start the server locally in development mode (watcher)
 npm run dev
 ```
+*The backend API will run on [http://localhost:3001](http://localhost:3001).*
 
-Visit **http://localhost:5173** and login with:
-- Email: `admin@nexusflow.io`
-- Password: `password123`
+### 2. Setup Frontend
+Open a new terminal in the root folder and run:
+```bash
+# Navigate to frontend directory
+cd frontend
 
----
+# Install dependencies
+npm install
 
-## Tech Stack
-
-| Category | Technology |
-|---|---|
-| Framework | React 18 + Vite + TypeScript |
-| Styling | Tailwind CSS v3 + Custom CSS Variables |
-| State | Zustand + React Query |
-| Routing | React Router v6 |
-| Forms | React Hook Form + Zod |
-| Charts | Recharts |
-| Data | DummyJSON API + Static Mock JSON |
-
----
-
-## Pages
-
-1. **Login** — Email/password validation, password toggle, remember me
-2. **Dashboard** — 5 KPI cards + sparklines, revenue chart, donut chart, sales funnel, activity feed
-3. **Customers** — Real DummyJSON API, search, sort, filter, pagination
-4. **Orders** — Search, filter, edit status modal, delete confirmation, optimistic updates
-5. **Settings** — Profile form, avatar upload, theme switcher, notification toggles, password change
-
----
-
-## Project Structure
-
+# Start the Vite development server
+npm run dev
 ```
-src/
-├── api/              # fetchCustomers, fetchOrders
-├── components/
-│   ├── charts/       # RevenueAreaChart, CustomerDonutChart, SalesFunnelChart, Sparkline
-│   ├── dashboard/    # KPICard, ActivityFeed
-│   ├── layout/       # Sidebar, Topbar, PageShell
-│   └── ui/           # Avatar, Badge, Modal, Skeleton, Toast
-├── data/             # mockData.ts
-├── pages/            # Login, Dashboard, Customers, Orders, Settings
-├── store/            # Zustand stores
-├── types/            # TypeScript interfaces
-├── utils/            # Utilities
-└── index.css         # Aurora Design System
-```
+*Open your browser and visit [http://localhost:5173](http://localhost:5173).*
+
+### 🔑 Demo Credentials
+* **Email**: `admin@nexusflow.io`
+* **Password**: `password123`
 
 ---
 
-## Design — Aurora Dark Theme
+## 🧠 Assumptions and Known Limitations
 
-- Background: `#070B14` (deep space)
-- Primary: `#00D4AA` (teal aurora)
-- Secondary: `#7C3AED` (violet)
-- Accent: `#F59E0B` (gold)
-- Glassmorphism cards, neon glow effects, CSS micro-animations
+### Assumptions
+* **Mock Authentication**: Authentication is simulated locally in the frontend state manager (`useAuthStore`) using a predefined super-admin user. No JWT or backend-level session state check is currently enforced.
+* **CORS Settings**: The backend relies on the `FRONTEND_URL` environment variable for CORS policies. If undefined in local environments, it defaults to allowing requests from the standard Vite development port (`http://localhost:5173`).
+* **Render Service Structure**: The monorepo layout assumes two distinct Render services: a Static Site for `frontend` and a Web Service for `backend`.
 
-*NexusFlow CRM — Built with React, TypeScript, and the Aurora Dark design system.*
+### Known Limitations
+* **Ephemeral Backend State**: The backend server runs in-memory without persistent database storage (such as MongoDB or Postgres). Any data updates (e.g., changing order status, creating customers) are reset when the backend process restarts.
+* **Build-time Env Variables**: React/Vite parses environment variables during the build stage. If the backend API URL changes, the frontend must be re-compiled and re-deployed.
+
+---
+
+## 🤖 AI Usage Disclosure
+
+### 1. AI Tools Used
+* **Antigravity Coding Assistant** powered by **Gemini 3.5 Flash** (Medium).
+
+### 2. AI-Assisted Tasks
+* **Render Deployment System**: Guided the creation of the root [render.yaml](render.yaml) configuration file to handle multi-service hosting.
+* **API Configuration**: Refactored [frontend/src/api/index.ts](frontend/src/api/index.ts) to utilize environment-driven base URLs (`VITE_API_BASE_URL`) instead of hardcoded values.
+* **Bug Fixes**: Troubleshooted and corrected input validations on the [Login.tsx](frontend/src/pages/Login.tsx) component by introducing `.trim()` validation on credentials.
+
+### 3. Human-Written Code
+* The overall React application logic, routing, component hierarchy (Aurora design system, charts, custom page layouts), state management integrations (Zustand + React Query), form schemas, styling systems, and the Express.js backend routing/endpoints.
+
+### 4. Independent Technical Decision
+* **Unified Build Environment Injection**: Configured Vite build processes to dynamically resolve the production backend URL using `import.meta.env` while keeping a local fallback. This enables the frontend static site to be easily portable across different hosting environments (e.g., Vercel, Netlify, Render) without rewriting source files.
