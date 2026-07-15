@@ -19,7 +19,7 @@ export const useAuthStore = create<AuthState>()(
     user: null, isAuthenticated: false, rememberMe: false,
     login: async (email, password, remember) => {
       await new Promise(r => setTimeout(r, 1100));
-      if (email.toLowerCase() === 'admin@nexusflow.io' && password === 'password123') {
+      if (email.trim().toLowerCase() === 'admin@nexusflow.io' && password.trim() === 'password123') {
         set({ user: MOCK_USER, isAuthenticated: true, rememberMe: remember });
         return true;
       }
